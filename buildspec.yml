@@ -9,7 +9,7 @@ phases:
       - echo Logging in to Amazon ECR.....
       - aws --version
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=180789647333.dkr.ecr.ap-south-1.amazonaws.com/ecs-cicd-nginx
+      - REPOSITORY_URI=714732271094.dkr.ecr.us-east-1.amazonaws.com/ecs-cicd-nginx
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:

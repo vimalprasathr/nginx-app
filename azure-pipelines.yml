@@ -36,7 +36,8 @@ stages:
         containerRegistry: 'vp-registry'
         repository: '$(IMAGE_NAME)'
         command: 'push'
-        tags: '$(TAG)'
+        tags: |
+          $(TAG)
 
 - stage: Deploy
   displayName: 'Deploy to Container Apps'

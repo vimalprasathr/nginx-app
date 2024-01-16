@@ -19,7 +19,7 @@ stages:
     - script: |
         echo "NEXT_PUBLIC_NEW_API_URL = $(NEXT_PUBLIC_NEW_API_URL_DEV)" > .env
         cat .env
-        ls -l
+        ls -a
       displayName: 'Create .env file'
 
 

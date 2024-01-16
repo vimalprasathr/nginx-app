@@ -56,7 +56,7 @@ stages:
       displayName: 'Deploy new container version'
       inputs:
         azureSubscription: 'Azure-Service-Principal'
-        imageToDeploy: '$(ACR_NAME)/$(IMAGE_NAME):$(TAG)'
+        imageToDeploy: 'vimalacr00005.azurecr.io/$(IMAGE_NAME):$(TAG)'
         containerAppName: '$(CONTAINERAPPS_APP)'
         resourceGroup: '$(RESOURCE_GROUP)'
         containerAppEnvironment: '$(CONTAINERAPPS_ENVIRONMENT)'
@@ -70,7 +70,7 @@ stages:
         appSourcePath: ''
         dockerfilePath: ''
         environmentVariables: ''
-        imageToBuild: '$(ACR_NAME)/$(IMAGE_NAME):$(TAG)'
+        imageToBuild: 'vimalacr00005.azurecr.io/$(IMAGE_NAME):$(TAG)'
         runtimeStack: ''
         workingDirectory: ''
 

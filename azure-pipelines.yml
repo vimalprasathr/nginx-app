@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 variables:  
-  IMAGE_NAME: 'docker-registry'/nginx-fe
+  IMAGE_NAME: academo00001.azurecr.io/nginx-fe
   CONTAINERAPPS_APP: aca-demo-fe
   CONTAINERAPPS_ENVIRONMENT: aca-demo
   RESOURCE_GROUP: aca-demo
@@ -36,8 +36,7 @@ stages:
         containerRegistry: 'docker-registry'
         repository: '$(IMAGE_NAME)'
         command: 'push'
-        tags: |
-          $(TAG)
+        tags: '$(TAG)'
 
 - stage: Deploy
   displayName: 'Deploy to Container Apps'

@@ -5,7 +5,7 @@ resources:
 - repo: self
 
 variables:  
-  IMAGE_NAME: academo00001.azurecr.io:nginx-fe
+  IMAGE_NAME: academo00001.azurecr.io/nginx-fe
   CONTAINERAPPS_APP: aca-demo-fe
   CONTAINERAPPS_ENVIRONMENT: aca-demo
   RESOURCE_GROUP: aca-demo

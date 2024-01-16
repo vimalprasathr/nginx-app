@@ -50,6 +50,18 @@ stages:
         echo "Debug: ACR_NAME = $(ACR_NAME)"
       displayName: 'Print Debug Information'
 
+    - script: |
+        echo "Logging into Azure Container Registry..."
+        az acr login --name vimalacr00005.azurecr.io --output none
+      displayName: 'Docker Login'
+
+    - script: |
+        docker pull $(IMAGE_NAME):$(TAG)
+        displayName: 'Pull Docker Image'
+
+        
+
+
     - task: AzureContainerApps@1
       displayName: 'Deploy new container version'
       inputs:

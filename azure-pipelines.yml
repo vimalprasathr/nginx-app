@@ -76,5 +76,14 @@ stages:
         acrPassword: 'ymYjxsEuwNRSnr+MzyHEBQBa7Nk58M31F+0US88yow+ACRCWaClO'
         acrUsername: 'vimalacr00005'
         location: 'East US'
+        yamlConfigPath: ''
+        appSourcePath: ''
+        disableTelemetry: ''
+        dockerfilePath: ''
+        environmentVariables: ''
+        imageToBuild: '$(IMAGE_NAME):$(TAG)'
+        runtimeStack: ''
+        workingDirectory: ''
+
 
 

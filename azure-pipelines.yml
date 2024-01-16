@@ -10,7 +10,7 @@ variables:
   CONTAINERAPPS_ENVIRONMENT: aca-demo
   RESOURCE_GROUP: aca-demo
   TAG: '$(Build.SourceVersion)'
-  ACR_NAME: new-acr
+  ACR_NAME: vimalacr00005
 
 stages:
 - stage: Build

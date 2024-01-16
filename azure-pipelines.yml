@@ -46,7 +46,7 @@ stages:
         echo "Debug: CONTAINERAPPS_APP = $(CONTAINERAPPS_APP)"
         echo "Debug: RESOURCE_GROUP = $(RESOURCE_GROUP)"
         echo "Debug: CONTAINERAPPS_ENVIRONMENT = $(CONTAINERAPPS_ENVIRONMENT)"
-        echo "Debug: ACR_NAME = new-acr"
+        echo "Debug: ACR_NAME = $(new-acr)"
       displayName: 'Print Debug Information'
 
     - task: AzureContainerApps@1
@@ -59,6 +59,6 @@ stages:
         containerAppEnvironment: '$(CONTAINERAPPS_ENVIRONMENT)'
         targetPort: '80'
         ingress: 'external'
-        acrName: 'new-acr'
+        acrName: '$(new-acr)'
 
 

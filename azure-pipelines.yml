@@ -16,8 +16,8 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
-    - script: 
-        echo "NEXT_PUBLIC_NEW_API_URL_TEST=${NEXT_PUBLIC_NEW_API_URL_DEV}" > .env
+    - script: |
+        echo "NEXT_PUBLIC_NEW_API_URL = ${NEXT_PUBLIC_NEW_API_URL_DEV}" > .env
         cat .env
         ls -l
       displayName: 'Create .env file'

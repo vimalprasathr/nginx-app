@@ -47,7 +47,7 @@ stages:
         echo "Debug: CONTAINERAPPS_APP = $(CONTAINERAPPS_APP)"
         echo "Debug: RESOURCE_GROUP = $(RESOURCE_GROUP)"
         echo "Debug: CONTAINERAPPS_ENVIRONMENT = $(CONTAINERAPPS_ENVIRONMENT)"
-        echo "Debug: ACR_NAME = $(new-acr)"
+        echo "Debug: ACR_NAME = $(ACR_NAME)"
       displayName: 'Print Debug Information'
 
     - task: AzureContainerApps@1
@@ -61,5 +61,6 @@ stages:
         targetPort: '80'
         ingress: 'external'
         acrName: 'vimalacr00005.azurecr.io'
+        acrPassword: 'ymYjxsEuwNRSnr+MzyHEBQBa7Nk58M31F+0US88yow+ACRCWaClO'
 
 

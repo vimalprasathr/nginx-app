@@ -10,6 +10,7 @@ variables:
   CONTAINERAPPS_ENVIRONMENT: aca-demo
   RESOURCE_GROUP: aca-demo
   TAG: '$(Build.SourceVersion)'
+  ACR_NAME: new-acr
 
 stages:
 - stage: Build
@@ -59,6 +60,6 @@ stages:
         containerAppEnvironment: '$(CONTAINERAPPS_ENVIRONMENT)'
         targetPort: '80'
         ingress: 'external'
-        acrName: '$(new-acr)'
+        acrName: 'vimalacr00005.azurecr.io'
 
 

@@ -16,6 +16,11 @@ stages:
     pool:
       vmImage: 'ubuntu-latest'
     steps:
+    - script: 
+        echo "NEXT_PUBLIC_NEW_API_URL_TEST=$(NEXT_PUBLIC_NEW_API_URL_DEV)" > .env
+        cat .env
+      displayName: 'Create .env file'
+
 
  
 
@@ -43,6 +48,7 @@ stages:
         echo "Debug: RESOURCE_GROUP = $(RESOURCE_GROUP)"
         echo "Debug: CONTAINERAPPS_ENVIRONMENT = $(CONTAINERAPPS_ENVIRONMENT)"
         echo "Debug: ACR_NAME = $(ACR_NAME)"
+        echo "Debug: NEXT_PUBLIC_NEW_API_URL = $(NEXT_PUBLIC_NEW_API_URL_TEST)"
       displayName: 'Print Debug Information'
 
 

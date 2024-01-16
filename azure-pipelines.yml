@@ -40,6 +40,15 @@ stages:
       vmImage: 'ubuntu-latest'
     steps:
 
+    - script: |
+        echo "Debug: IMAGE_NAME = $(IMAGE_NAME)"
+        echo "Debug: TAG = $(TAG)"
+        echo "Debug: CONTAINERAPPS_APP = $(CONTAINERAPPS_APP)"
+        echo "Debug: RESOURCE_GROUP = $(RESOURCE_GROUP)"
+        echo "Debug: CONTAINERAPPS_ENVIRONMENT = $(CONTAINERAPPS_ENVIRONMENT)"
+        echo "Debug: ACR_NAME = new-acr"
+      displayName: 'Print Debug Information'
+
     - task: AzureContainerApps@1
       displayName: 'Deploy new container version'
       inputs:
@@ -51,4 +60,5 @@ stages:
         targetPort: '80'
         ingress: 'external'
         acrName: 'new-acr'
-        
+
+

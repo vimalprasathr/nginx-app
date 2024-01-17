@@ -6,7 +6,7 @@ resources:
 
 variables:  
 #  TAG: '$(Build.SourceVersion)'
-   TAG: '$(TAG)'
+#   TAG: 'da8cc8609ae7fe820ecf708625d9fbb7ae46db61'
 
 stages:
 - stage: Build

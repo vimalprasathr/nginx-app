@@ -4,7 +4,7 @@ trigger:
 resources:
 - repo: self
 
-variables:  
+#variables:  
 #  TAG: '$(Build.SourceVersion)'
 #   TAG: 'da8cc8609ae7fe820ecf708625d9fbb7ae46db61'
 

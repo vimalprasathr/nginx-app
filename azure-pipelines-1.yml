@@ -1,0 +1,82 @@
+trigger:
+- dev
+
+resources:
+- repo: self
+
+#variables:  
+#  TAG: '$(Build.SourceVersion)'
+#   TAG: 'da8cc8609ae7fe820ecf708625d9fbb7ae46db61'
+
+stages:
+- stage: Build
+  displayName: 'Build and push image'
+  jobs:
+  - job: Build
+    displayName: 'Build'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - script: |
+        echo "NEXT_PUBLIC_NEW_API_URL = $(NEXT_PUBLIC_NEW_API_URL_DEV)" > .env
+        cat .env
+        ls -a
+      displayName: 'Create .env file'
+
+
+ 
+
+    - task: Docker@2
+      displayName: 'Push image to Docker Hub'
+      inputs:
+        containerRegistry: '$(CONTAINERREGISTRY_NAME)'
+        repository: '$(IMAGE_NAME)'
+        command: 'buildAndPush'
+        tags: '$(TAG)'
+
+- stage: Deploy
+  displayName: 'Deploy to Container Apps'
+  jobs:
+  - job: Deploy
+    displayName: 'Deploy'
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+
+    - script: |
+        echo "Debug: IMAGE_NAME = $(IMAGE_NAME)"
+        echo "Debug: TAG = $(TAG)"
+        echo "Debug: CONTAINERAPPS_APP = $(CONTAINERAPPS_APP)"
+        echo "Debug: RESOURCE_GROUP = $(RESOURCE_GROUP)"
+        echo "Debug: CONTAINERAPPS_ENVIRONMENT = $(CONTAINERAPPS_ENVIRONMENT)"
+        echo "Debug: ACR_NAME = $(ACR_NAME)"
+        echo "Debug: NEXT_PUBLIC_NEW_API_URL = $(NEXT_PUBLIC_NEW_API_URL)"
+      displayName: 'Print Debug Information'
+
+
+
+    - task: AzureContainerApps@1
+      displayName: 'Deploy new container version'
+      inputs:
+        azureSubscription: 'Azure-Service-Principal'
+        imageToDeploy: '$(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(TAG)'
+        containerAppName: '$(CONTAINERAPPS_APP)'
+        resourceGroup: '$(RESOURCE_GROUP)'
+        containerAppEnvironment: '$(CONTAINERAPPS_ENVIRONMENT)'
+        targetPort: '80'
+        ingress: 'external'
+        acrName: '$(ACR_NAME)'
+        acrPassword: '$(ACRPASSWORD)'
+        acrUsername: '$(ACRUSERNAME)'
+        location: 'East US'
+        yamlConfigPath: ''
+        appSourcePath: ''
+        dockerfilePath: ''
+        environmentVariables: ''
+        imageToBuild: '$(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(TAG)'
+        runtimeStack: ''
+        workingDirectory: ''
+
+
+
+

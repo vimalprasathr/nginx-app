@@ -58,7 +58,7 @@ stages:
     - task: AzureContainerApps@1
       displayName: 'Deploy new container version'
       inputs:
-        azureSubscription: 'Azure-Service-Principal'
+        azureSubscription: '$(AZURESUBSCRIPTION)'
         imageToDeploy: '$(ACR_NAME).azurecr.io/$(IMAGE_NAME):$(TAG)'
         containerAppName: '$(CONTAINERAPPS_APP)'
         resourceGroup: '$(RESOURCE_GROUP)'
